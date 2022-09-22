@@ -1,37 +1,40 @@
 import React from "react";
 import "../App.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Carousel = ({ slides }) => {
   const [current, setCurrent] = useState(0);
-  const [time, setTime] = useState(true);
-  let interval = 0;
+  const interval = useRef(null);
+  const [count, setCount] = useState(0);
+
+  const reset = () => {
+    clearInterval(interval.current);
+    interval.current = setInterval(() => {
+      scroll();
+    }, 5000);
+  };
+
   const handlePrevious = () => {
+    reset();
     setCurrent(current === 0 ? slides.length - 1 : current - 1);
   };
+
   const handleNext = () => {
-    //setTime(false);
+    reset();
     setCurrent(current === slides.length - 1 ? 0 : current + 1);
   };
   const scroll = () => {
+    setCount((count) => count + 1);
     setCurrent(current === 0 ? slides.length - 1 : current - 1);
   };
 
-  const timer = () => {
-    interval = setInterval(() => {
+  React.useEffect(() => {
+    interval.current = setInterval(() => {
       scroll();
     }, 5000);
+    return () => clearInterval(interval.current);
+  });
 
-    // if (time === false) return () => clearInterval(interval);
-  };
-
-  timer();
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     scroll();
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // });
   const containerStyles = {
     height: "100%",
     position: "relative",
@@ -43,6 +46,7 @@ const Carousel = ({ slides }) => {
     backgroundImage: `url(${slides[current].url})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
+    color: "#eee",
   };
 
   const leftArrowStyles = {
@@ -75,7 +79,7 @@ const Carousel = ({ slides }) => {
         Next
       </div>
 
-      <div style={carouselStyles}>Hi</div>
+      <h1 style={carouselStyles}>{count}</h1>
     </div>
   );
 };
