@@ -7,6 +7,7 @@ import Carousel from "./components/Carousel";
 
 const App = () => {
   const [products, setProducts] = React.useState(null);
+
   const images = [
     {
       url: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60",
@@ -45,8 +46,8 @@ const App = () => {
       <div style={containerStyles}>
         <Carousel slides={images} />
       </div>
-      {/* <CreateProduct /> */}
-      {/* <DisplayProduct products={products} /> */}
+      <CreateProduct />
+      <DisplayProduct products={products} />
     </div>
   );
 };
