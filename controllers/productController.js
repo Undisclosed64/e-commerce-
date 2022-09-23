@@ -32,10 +32,3 @@ exports.retrieveProducts = (req, res) => {
     }
   );
 };
-
-exports.getProducts = (req, res) => {
-  Product.find((err, products) => {
-    if (err) res.status(500).json(err);
-    res.json(products);
-  });
-};

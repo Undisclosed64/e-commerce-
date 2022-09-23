@@ -1,38 +1,29 @@
 import React from "react";
 import "../App.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const Carousel = ({ slides }) => {
   const [current, setCurrent] = useState(0);
-  const interval = useRef(null);
-  const [count, setCount] = useState(0);
-
-  const reset = () => {
-    clearInterval(interval.current);
-    interval.current = setInterval(() => {
-      scroll();
-    }, 5000);
-  };
 
   const handlePrevious = () => {
-    reset();
     setCurrent(current === 0 ? slides.length - 1 : current - 1);
   };
 
   const handleNext = () => {
-    reset();
     setCurrent(current === slides.length - 1 ? 0 : current + 1);
   };
   const scroll = () => {
-    setCount((count) => count + 1);
-    setCurrent(current === 0 ? slides.length - 1 : current - 1);
+    if (current === slides.length - 1) {
+      return setCurrent(0);
+    }
+    return setCurrent(current + 1);
   };
 
   React.useEffect(() => {
-    interval.current = setInterval(() => {
+    const interval = setInterval(() => {
       scroll();
     }, 5000);
-    return () => clearInterval(interval.current);
+    return () => clearInterval(interval);
   });
 
   const containerStyles = {
@@ -79,7 +70,7 @@ const Carousel = ({ slides }) => {
         Next
       </div>
 
-      <h1 style={carouselStyles}>{count}</h1>
+      <h1 style={carouselStyles}>Hi</h1>
     </div>
   );
 };
