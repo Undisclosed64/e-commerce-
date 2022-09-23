@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 
 const DisplayProduct = (props) => {
   const products = props.products;
-  const path = "http://localhost:5000/images/";
+  const path = "https://calm-springs-54909.herokuapp.com/images/";
   return (
     <div className="product-container">
       {products.map((product) => (

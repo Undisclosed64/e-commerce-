@@ -31,13 +31,16 @@ const CreateProduct = () => {
       newProduct.image = filename;
 
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post(
+          "https://calm-springs-54909.herokuapp.com/api/upload",
+          data
+        );
       } catch (err) {}
     }
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/products",
+        "https://calm-springs-54909.herokuapp.com/api/products",
         newProduct
       );
       <DisplayProduct />;

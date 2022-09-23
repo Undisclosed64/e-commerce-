@@ -65,11 +65,14 @@ const App = () => {
     setName(value);
     if (value !== "") {
       try {
-        const res = await axios.get("http://localhost:5000/api/products", {
-          params: {
-            name: value,
-          },
-        });
+        const res = await axios.get(
+          "https://calm-springs-54909.herokuapp.com/api/products",
+          {
+            params: {
+              name: value,
+            },
+          }
+        );
         //console.log(res.data);
         setSuggestions(res.data);
       } catch (err) {}
@@ -83,11 +86,14 @@ const App = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products", {
-        params: {
-          name: name,
-        },
-      });
+      const res = await axios.get(
+        "https://calm-springs-54909.herokuapp.com/api/products",
+        {
+          params: {
+            name: name,
+          },
+        }
+      );
       //console.log(res.data);
       setProducts(res.data);
       const input = document.querySelector(".searchInput");
@@ -97,11 +103,14 @@ const App = () => {
   };
   const handleSingleSubmit = async (productName) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products", {
-        params: {
-          name: productName,
-        },
-      });
+      const res = await axios.get(
+        "https://calm-springs-54909.herokuapp.com/api/products",
+        {
+          params: {
+            name: productName,
+          },
+        }
+      );
       //console.log(res.data);
       setProducts(res.data);
       const input = document.querySelector(".searchInput");
