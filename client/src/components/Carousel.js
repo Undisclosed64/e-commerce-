@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { useState } from "react";
+import { AiOutlineRightCircle, AiOutlineLeftCircle } from "react-icons/ai";
 
 const Carousel = ({ slides }) => {
   const [current, setCurrent] = useState(0);
@@ -31,13 +32,7 @@ const Carousel = ({ slides }) => {
     position: "relative",
   };
   const carouselStyles = {
-    width: "100%",
-    height: "100%",
-    borderRadius: "10px",
     backgroundImage: `url(${slides[current].url})`,
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    color: "#eee",
   };
 
   const leftArrowStyles = {
@@ -62,15 +57,12 @@ const Carousel = ({ slides }) => {
     cursor: "pointer",
   };
   return (
-    <div style={containerStyles}>
-      <div style={leftArrowStyles} onClick={handlePrevious}>
-        Prev
+    <div style={containerStyles} className="carousal-wrapper">
+      <AiOutlineLeftCircle style={leftArrowStyles} onClick={handlePrevious} />
+      <AiOutlineRightCircle style={rightArrowStyles} onClick={handleNext} />
+      <div style={carouselStyles} className="carousel">
+        <span className="text">{slides[current].text}</span>
       </div>
-      <div style={rightArrowStyles} onClick={handleNext}>
-        Next
-      </div>
-
-      <h1 style={carouselStyles}>Hi</h1>
     </div>
   );
 };

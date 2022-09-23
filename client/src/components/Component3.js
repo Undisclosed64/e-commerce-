@@ -4,8 +4,10 @@ import Carousel from "./Carousel";
 
 const Component3 = ({ data }) => {
   return (
-    <div>
-      <Carousel slides={data} />
+    <div className="container-three">
+      <div className="componentThree-container">
+        <Carousel slides={data} />
+      </div>
     </div>
   );
 };

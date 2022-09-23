@@ -22,6 +22,16 @@ exports.createProduct = (req, res) => {
   }
 };
 
+// exports.retrieveProduct = (req, res) => {
+//   Product.findOne(
+//     { name: { $regex: req.query.name, $options: "i" } },
+//     (err, products) => {
+//       if (err) res.status(500).json(err);
+//       res.json(products);
+//     }
+//   );
+// };
+
 //find products handler
 exports.retrieveProducts = (req, res) => {
   Product.find(

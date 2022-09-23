@@ -1,16 +1,25 @@
 import React from "react";
 import "../App.css";
+import { AiFillStar } from "react-icons/ai";
 
 const DisplayProduct = (props) => {
   const products = props.products;
-  console.log(props.products);
   const path = "http://localhost:5000/images/";
   return (
-    <div>
+    <div className="product-container">
       {products.map((product) => (
-        <div key={product._id}>
-          <img src={`${path}/${product.image}`} alt=""></img>
-          <div>{product.name}</div>
+        <div key={product._id} className="product">
+          <img
+            src={`${path}/${product.image}`}
+            alt=""
+            className="product-image"
+          />
+          <div className="product-brand">{product.brandName}</div>
+          <div className="product-name">{product.name}</div>
+          <div className="product-rating">
+            <div>{product.rating}</div>
+            <AiFillStar className="rating-logo" />
+          </div>
         </div>
       ))}
     </div>
