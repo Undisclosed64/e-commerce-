@@ -14,12 +14,15 @@ const DisplayProduct = (props) => {
             alt=""
             className="product-image"
           />
-          <div className="product-brand">{product.brandName}</div>
-          <div className="product-name">{product.name}</div>
-          <div className="product-rating">
-            <div>{product.rating}</div>
-            <AiFillStar className="rating-logo" />
-          </div>
+          <section className="product-info">
+            <div className="product-brand">{product.brandName}</div>
+            <div className="product-name">{product.name}</div>
+            <div className="product-price">$249</div>
+            <div className="product-rating">
+              <div>{product.rating}</div>
+              <AiFillStar className="rating-logo" />
+            </div>
+          </section>
         </div>
       ))}
     </div>
