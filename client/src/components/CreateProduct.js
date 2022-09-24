@@ -31,10 +31,7 @@ const CreateProduct = () => {
       newProduct.image = filename;
 
       try {
-        await axios.post(
-          "https://calm-springs-54909.herokuapp.com/api/upload",
-          data
-        );
+        await axios.post("http://localhost:5000/api/upload", data);
       } catch (err) {}
     }
 
